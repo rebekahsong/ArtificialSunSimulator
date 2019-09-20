@@ -32,8 +32,7 @@ LiquidCrystal_I2C lcd(0x27,16,2);
  
 void setup()
 {
-  lcd.begin();                      // initialize the lcd 
-  // Print a message to the LCD.
+  lcd.begin(); 
   lcd.backlight();
   lcd.print("Initialising...");
     lcd.createChar(2, clock);
@@ -65,7 +64,6 @@ void loop()
   buttonStateyellow2 = digitalRead(buttonyellow2);  
   buttonStatewhite1 = digitalRead(buttonwhite1);
   buttonStatewhite2 = digitalRead(buttonwhite2);
-  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   if (buttonStateyellow1 == HIGH) {
    if (timehourrise == 24) {
       timehourrise = -1;
@@ -118,25 +116,21 @@ void loop()
 if (now.hour() == timehourrise && now.minute()==timeminuterise) {  
       // red fades in 
       for (float fadeValue = 0 ; fadeValue <= 225; fadeValue += 1) {
-      // sets the value (range from 0 to 225):
       analogWrite(red, fadeValue);
       delay(75);
       }
-       // green fades in
+      // green fades in
       for (float fadeValue = 0 ; fadeValue <= 75; fadeValue += 0.1875) {
-      // sets the value (range from 0 to 125):
       analogWrite(green, fadeValue);
       delay(75);
       }                                                                                                                                                                                                                                                                      
       // white fades in
       for (float fadeValue = 0 ; fadeValue <= 225; fadeValue += 0.75) {
-      // sets the value (range from 0 to 225):
       analogWrite(white, fadeValue);
       delay(75);
       }
-     //red and green fade out
+      //red and green fade out
       for (float fadeValue = 225 ; fadeValue >= 0; fadeValue -= 3) {
-      // sets the value (range from 0 to 1000):
       analogWrite(red, fadeValue);
       analogWrite(green, fadeValue);
       // wait for 30 milliseconds to see the dimming effect
@@ -144,13 +138,11 @@ if (now.hour() == timehourrise && now.minute()==timeminuterise) {
       } 
       // blue fades in
       for (float fadeValue = 0 ; fadeValue <= 150; fadeValue += 0.375) {
-      // sets the value (range from 0 to 225):
       analogWrite(blue, fadeValue);
       delay(75);
       }
       //blue and white fade out
       for (float fadeValue = 225 ; fadeValue >= 0; fadeValue -= 1) {
-      // sets the value (range from 0 to 1000):
       analogWrite(blue, fadeValue);
       analogWrite(white, fadeValue);
       // wait for 30 milliseconds to see the dimming effect
@@ -158,15 +150,13 @@ if (now.hour() == timehourrise && now.minute()==timeminuterise) {
       } 
   }
 if (now.hour() == timehourset && now.minute()==timeminuteset) { 
-       // red fades in 
+      // red fades in 
       for (float fadeValue = 0 ; fadeValue <= 225; fadeValue += 0.25) {
-      // sets the value (range from 0 to 225):
       analogWrite(red, fadeValue);
       delay(75);
       }
       // red fades out
       for (float fadeValue = 0 ; fadeValue <= 225; fadeValue -= 0.25) {
-      // sets the value (range from 0 to 225):
       analogWrite(red, fadeValue);
       delay(75);
       }                                                                                                                                                                                                                                                                  
